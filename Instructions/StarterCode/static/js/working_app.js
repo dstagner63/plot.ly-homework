@@ -1,0 +1,30 @@
+d3.json("../data/samples.json").then(function(data) {
+  console.log(data);
+})
+  
+
+
+
+// function init(){
+
+//     var selector = d3.select("#selDataset");
+    
+//       d3.json("data/samples.json").then((data)=>{
+    
+    
+//         var sampleNames = data.names;
+    
+//         sampleNames.forEach(sample => {
+//           selector
+//               .append("option")
+//               .text(sample)
+//               .property("value", sample);
+        
+//         }); 
+    
+//       });
+    
+//     };
+    
+    
+//     init();
