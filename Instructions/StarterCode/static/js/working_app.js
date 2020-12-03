@@ -2,8 +2,6 @@
 //   console.log(data);
 // })
   
-
-
 function Metadata (sample){
 
   d3.json("samples.json").then(function(data){
@@ -13,8 +11,6 @@ function Metadata (sample){
     var demo = d3.select("#sample-metadata");
 
     demo.html("");
-
-
 
     Object.entries(meta).forEach(([key, value]) => {
 
@@ -26,26 +22,17 @@ function Metadata (sample){
   });
 }
 
-
-
-
-
-
 function charts(sample_id){
 
   d3.json("samples.json").then(function(data){
 
   var samples = data.samples.filter(m => m.id.toString() === sample_id)[0];
 
-
-
   var x_val = samples.otu_ids.reverse().slice(0,10);
   var y_val = samples.sample_values.slice(0,10).reverse();
   var otu_id = x_val.map(d=> "OTU " + d);
 
   var trace1 = {
-
-
     x: y_val,
     y: otu_id,
     text: x_val,
@@ -53,12 +40,10 @@ function charts(sample_id){
     orientation: 'h'
   }
 
-
-
   var chartData = [trace1];
 
   var layout= {
-    title: "test",
+    // title: "test",
     margin: {
      l:100,
      r:100,
@@ -68,26 +53,45 @@ function charts(sample_id){
 
   } 
 
-
      Plotly.newPlot("bar", chartData, layout);
 
   });
 
+  d3.json("samples.json").then(function(data){
 
+    var samples = data.samples.filter(m => m.id.toString() === sample_id)[0];
+  
+    var x_val = samples.otu_ids.slice(0,10);
+    var y_val = samples.sample_values.slice(0,10);
+    var otu_id = x_val.map(d=> "OTU " + d);
+    var otu_labels = samples.otu_labels;
 
-
-
-
-
-
-
-
-//bubule
-
-
-
-
-
+    var trace2 = {
+      x: otu_id,
+      y: y_val,
+      mode: 'bubble',
+      marker: {
+        size: y_val, 
+        colors: otu_id, 
+        text: otu_labels
+      }
+    }
+  
+    var chartData = [trace2];
+  
+    var layout= {
+      margin: {
+       l:100,
+       r:100,
+       t:100,
+       b:100
+      }
+  
+    } 
+  
+       Plotly.newPlot("bubble", chartData, layout);
+  
+    });
 
 
 
@@ -100,14 +104,6 @@ function optionChanged(id){
 
 
 }
-
-
-
-
-
-
-
-
 
 function init(){
 
