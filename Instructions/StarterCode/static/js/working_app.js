@@ -16,9 +16,7 @@ function Metadata (sample){
 
         demo.append('h5').text(`${key}: ${value}`);
 
-   });
-  
-
+    });
   });
 }
 
@@ -97,10 +95,9 @@ function charts(sample_id){
     }
   
        Plotly.newPlot("bubble", chartData, layout);
-  
-    });
+  });
 
-}
+
 
     // This block of code is for the gauge chart. Need new function.
     // d3.json("samples.json").then(function(data){
@@ -151,7 +148,6 @@ function optionChanged(id){
     Metadata(id);
     charts(id)
 
-
 }
 
 function init(){
@@ -176,4 +172,4 @@ function init(){
     };
     
     
-    // init();
+init();
