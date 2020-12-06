@@ -144,6 +144,8 @@ function charts(sample_id){
     
     //   };
 
+}
+
 function optionChanged(id){
     Metadata(id);
     charts(id)
