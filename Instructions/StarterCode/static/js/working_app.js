@@ -38,7 +38,7 @@ function charts(sample_id){
     orientation: 'h'
   }
 
-  var chartData = [trace1];
+  var chartData1 = [trace1];
 
   var layout= {
     margin: {
@@ -50,7 +50,7 @@ function charts(sample_id){
 
   } 
 
-     Plotly.newPlot("bar", chartData, layout);
+     Plotly.newPlot("bar", chartData1, layout);
 
   });
 
@@ -74,7 +74,7 @@ function charts(sample_id){
       }
     }
   
-    var chartData = [trace2];
+    var chartData2 = [trace2];
   
     var layout= {
       xaxis: {
@@ -94,7 +94,7 @@ function charts(sample_id){
   
     }
   
-      Plotly.newPlot("bubble", chartData, layout);
+      Plotly.newPlot("bubble", chartData2, layout);
   });
 
 
@@ -118,7 +118,7 @@ function charts(sample_id){
       }
     ];
     
-    var chartData = [trace3];
+    var chartData3 = [trace3];
   
     var layout= {
       xaxis: {
@@ -138,7 +138,7 @@ function charts(sample_id){
   
     }; 
   
-        Plotly.newPlot('gauge', chartData, layout);
+        Plotly.newPlot('gauge', chartData3, layout);
   
   });
 
