@@ -114,7 +114,7 @@ function charts(sample_id){
         value: washing,
         title: { text: "Belly Button Washing Frequency" },
         type: "indicator",
-        mode: "gauge+number"
+        mode: "gauge"
       }
     ];
     
