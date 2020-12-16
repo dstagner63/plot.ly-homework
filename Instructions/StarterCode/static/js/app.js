@@ -43,8 +43,8 @@ function charts(sample_id){
   var layout= {
     margin: {
      l:100,
-     r:100,
-     t:100,
+     r:10,
+     t:25,
      b:50
     }
 
@@ -87,12 +87,16 @@ function charts(sample_id){
   
     var layout= {
       xaxis: {
-        // text: 'OTU ID',
-        font: {
-          family: 'Courier New, monospace',
-          size: 18,
-          color: '#7f7f7f'
-          }
+        visible: true,
+        title: {
+          text: 'OTU ID',
+          font: {
+            family: 'Courier New, monospace',
+            size: 18,
+            color: '#7f7f7f'
+            }
+        }
+        
       },
       margin: {
       l:25,
@@ -110,7 +114,7 @@ function charts(sample_id){
   // This block of code is for the gauge chart. Need new function.
   d3.json("samples.json").then(function(data){
     var samples = data.metadata.filter(entry => entry.id.toString() === sample_id)[0].wfreq;
-    // var washing = data.metadata.wfreq;
+   
     console.log(samples);
 
     var trace3 = [
@@ -121,8 +125,12 @@ function charts(sample_id){
         type: "indicator",
         mode: "gauge+number",
         gauge: {
-          range: [null, 9],
-          tickvals: [0,1,2,3,4,5,6,7,8,9],
+          axis: {
+            range: [null, 9],
+            tickmode: "array",
+            tickvals: [0,1,2,3,4,5,6,7,8,9]
+          },
+          
           steps: [
             {range: [0, 1], color: "rgb(208, 220, 210)"},
             {range: [1, 2], color: "rgb(196, 212, 199)"},
@@ -132,8 +140,8 @@ function charts(sample_id){
             {range: [5, 6], color: "rgb(149, 178, 155)"},
             {range: [6, 7], color: "rgb(137, 169, 143)"},
             {range: [7, 8], color: "rgb(125, 161, 131)"},
-            {range: [8, 9], color: "rgb(113, 152, 120)"},
-            {range: [9, 10], color: "rgb(103, 142, 110)"},
+            {range: [8, 9], color: "rgb(113, 152, 120)"}
+            // {range: [9, 10], color: "rgb(103, 142, 110)"},
           ], 
           threshold: {
             value: samples,
@@ -154,8 +162,8 @@ function charts(sample_id){
     var layout= {
       
       margin: {
-        l:25,
-        r:0,
+        l:15,
+        r:15,
         t:50,
         b:100
       }
