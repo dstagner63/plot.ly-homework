@@ -63,14 +63,23 @@ function charts(sample_id){
     var otu_id = x_val.map(d=> + d);
     var otu_labels = samples.otu_labels;
 
+    console.log(samples);
+
+    var labels = []
+
+    var i;
+    for (i = 0; i < otu_labels.length; i ++) {
+      labels[i] = "(" + x_val[i] + "," + y_val[i] + ")<br>" + otu_labels[i];
+    }
+
     var trace2 = {
       x: otu_id,
       y: y_val,
       mode: 'markers',
+      text: labels,
       marker: {
         size: y_val, 
-        colors: otu_id, 
-        text: otu_labels
+        color: otu_id
       }
     }
   
@@ -98,94 +107,55 @@ function charts(sample_id){
   });
 
 
-  //   // This block of code is for the gauge chart. Need new function.
-  // d3.json("samples.json").then(function(data){
+  // This block of code is for the gauge chart. Need new function.
+  d3.json("samples.json").then(function(data){
+    var samples = data.metadata.filter(entry => entry.id.toString() === sample_id)[0].wfreq;
+    // var washing = data.metadata.wfreq;
+    console.log(samples);
 
-  //   var washing = data.metadata.wfreq;
-
-  //   // var value = metadata.wfreq;
-  //   // var y_val = samples.sample_values;
-  //   // var otu_id = x_val.map(d=> + d);
-  //   // var otu_labels = samples.otu_labels;
-
-  //   var trace3 = [
-  //     {
-  //       domain: { x: [0, 1], y: [0, 1] },
-  //       value: washing,
-  //       title: { text: "Belly Button Washing Frequency" },
-  //       type: "indicator",
-  //       mode: "gauge"
-  //     }
-  //   ];
-    
-  //   var chartData3 = [trace3];
-  
-  //   var layout= {
-  //     xaxis: {
-  //       text: 'OTU ID',
-  //       font: {
-  //         family: 'Courier New, monospace',
-  //         size: 18,
-  //         color: '#7f7f7f'
-  //         }
-  //     },
-  //     margin: {
-  //       l:25,
-  //       r:0,
-  //       t:50,
-  //       b:100
-  //     }
-  
-  //   }; 
-  
-  //       Plotly.newPlot('gauge', chartData3, layout);
-  
-  // });
-
-  var gaugeDiv = document.getElementById("gauge-chart");
-
-  var trace3 = {
-    type: "pie",
-    showlegend: false,
-    hole: 0.4,
-    rotation: 90,
-    values: [100 / 5, 100 / 5, 100 / 5, 100 / 5, 100 / 5, 100],
-    text: ["Very Low", "Low", "Average", "Good", "Excellent", ""],
-    direction: "clockwise",
-    textinfo: "text",
-    textposition: "inside",
-    marker: {
-      colors: ["rgba(255, 0, 0, 0.6)", "rgba(255, 165, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(144, 238, 144, 0.6)", "rgba(154, 205, 50, 0.6)", "white"]
-    },
-    labels: ["0-10", "10-50", "50-200", "200-500", "500-2000", ""],
-    hoverinfo: "label"
-  };
-  
-  var degrees = 115, radius = .6;
-  var radians = degrees * Math.PI / 180;
-  var x = -1 * radius * Math.cos(radians);
-  var y = radius * Math.sin(radians);
-  
-  var layout = {
-    shapes:[{
-        type: 'line',
-        x0: 0,
-        y0: 0,
-        x1: x,
-        y1: 0.5,
-        line: {
-          color: 'black',
-          width: 8
+    var trace3 = [
+      {
+        domain: { x: [0, 1], y: [0, 1] },
+        value: samples,
+        title: { text: "Belly Button Washing Frequency <br> Scrubs per Week" },
+        type: "indicator",
+        mode: "gauge+number",
+        gauge: {
+          range: [null, 9],
+          tickvals: [0,1,2,3,4,5,6,7,8,9],
+          steps: [
+            {range: [0, 5], color: "rgb(151, 249, 249)"}
+          ],
+          threshold: {
+            value: samples,
+            line: {
+              color: "black",
+              width: 4
+            },
+            thickness: 0.75
+          },
+          bar: {
+            color: "transparent"
+          }
         }
-      }],
-    title: 'Number of Printers Sold in a Week',
-    xaxis: {visible: false, range: [-1, 1]},
-    yaxis: {visible: false, range: [-1, 1]}
-  };
+
+      }
+    ];
   
-  var data = [trace3];
+    var layout= {
+      
+      margin: {
+        l:25,
+        r:0,
+        t:50,
+        b:100
+      }
   
-  Plotly.plot(gaugeDiv, data, layout, {staticPlot: true});
+    }; 
+  
+        Plotly.newPlot('gauge', trace3, layout);
+  
+  });
 
 }
 
@@ -218,3 +188,13 @@ function init(){
     
     
 init();
+
+
+// xaxis: {
+//   text: 'OTU ID',
+//   font: {
+//     family: 'Courier New, monospace',
+//     size: 18,
+//     color: '#7f7f7f'
+//     }
+// },
