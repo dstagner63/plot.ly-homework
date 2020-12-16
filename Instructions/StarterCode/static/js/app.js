@@ -117,7 +117,7 @@ function charts(sample_id){
       {
         domain: { x: [0, 1], y: [0, 1] },
         value: samples,
-        title: { text: "Belly Button Washing Frequency <br> Scrubs per Week" },
+        title: { text: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week" },
         type: "indicator",
         mode: "gauge+number",
         gauge: {
@@ -133,6 +133,7 @@ function charts(sample_id){
             {range: [6, 7], color: "rgb(137, 169, 143)"},
             {range: [7, 8], color: "rgb(125, 161, 131)"},
             {range: [8, 9], color: "rgb(113, 152, 120)"},
+            {range: [9, 10], color: "rgb(103, 142, 110)"},
           ], 
           threshold: {
             value: samples,
