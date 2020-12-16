@@ -87,7 +87,7 @@ function charts(sample_id){
   
     var layout= {
       xaxis: {
-        text: 'OTU ID',
+        // text: 'OTU ID',
         font: {
           family: 'Courier New, monospace',
           size: 18,
@@ -124,8 +124,16 @@ function charts(sample_id){
           range: [null, 9],
           tickvals: [0,1,2,3,4,5,6,7,8,9],
           steps: [
-            {range: [0, 5], color: "rgb(151, 249, 249)"}
-          ],
+            {range: [0, 1], color: "rgb(208, 220, 210)"},
+            {range: [1, 2], color: "rgb(196, 212, 199)"},
+            {range: [2, 3], color: "rgb(184, 204, 188)"},
+            {range: [3, 4], color: "rgb(172, 195, 177)"},
+            {range: [4, 5], color: "rgb(160, 186, 166)"},
+            {range: [5, 6], color: "rgb(149, 178, 155)"},
+            {range: [6, 7], color: "rgb(137, 169, 143)"},
+            {range: [7, 8], color: "rgb(125, 161, 131)"},
+            {range: [8, 9], color: "rgb(113, 152, 120)"},
+          ], 
           threshold: {
             value: samples,
             line: {
