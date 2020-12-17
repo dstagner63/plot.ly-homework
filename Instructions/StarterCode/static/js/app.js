@@ -141,7 +141,6 @@ function charts(sample_id){
             {range: [6, 7], color: "rgb(137, 169, 143)"},
             {range: [7, 8], color: "rgb(125, 161, 131)"},
             {range: [8, 9], color: "rgb(113, 152, 120)"}
-            // {range: [9, 10], color: "rgb(103, 142, 110)"},
           ], 
           threshold: {
             value: samples,

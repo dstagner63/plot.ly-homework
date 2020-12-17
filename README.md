@@ -39,7 +39,6 @@ Coloring gauge chart steps:
 `{range: [6, 7], color: "rgb(137, 169, 143)"},`
 `{range: [7, 8], color: "rgb(125, 161, 131)"},`
 `{range: [8, 9], color: "rgb(113, 152, 120)"},`
-`{range: [9, 10], color: "rgb(103, 142, 110)"},`
 
 ## Features
 List of features ready and TODOs for future development
@@ -49,7 +48,7 @@ List of features ready and TODOs for future development
 * Gauge chart that plots the weekly belly button washing frequency of the selected subject.
 
 To-do list:
-* I have no improvement ideas
+* Add a needle indicator to the gauge chart.
 * Utilize this assignment as a dashboard template for other data.
 
 ## Status
